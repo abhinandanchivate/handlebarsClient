@@ -9,12 +9,13 @@ import exphbs from "express-handlebars";
 import homeRouter from "./routes/index.js";
 import helpers from "./helpers/index.js";
 import userRouter from "./routes/api/users.js";
+import bodyParser from "body-parser";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(__dirname);
 const app = express();
 const PORT = 3006;
-
+app.use(bodyParser.urlencoded({ extended: false }));
 connectDB();
 // to get the req data in terms of json
 app.use(express.json());

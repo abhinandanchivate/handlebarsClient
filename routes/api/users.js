@@ -1,10 +1,11 @@
 // 1st we need to render the template
 // 2nd we need to handle the rest call.
 import express from "express";
+import navbarData from "../../data/navbarData.js";
+import { getRegisterUser, registerUser } from "../../controllers/users.js";
 
 const router = express.Router();
 
-router.get("/register", (req, res) => {
-  res.render("auth/register", {});
-});
+router.get("/register", getRegisterUser);
+router.post("/register", registerUser);
 export default router;

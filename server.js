@@ -10,6 +10,7 @@ import homeRouter from "./routes/index.js";
 import helpers from "./helpers/index.js";
 import userRouter from "./routes/api/users.js";
 import bodyParser from "body-parser";
+import dashboardrouter from "./routes/dashboard.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(__dirname);
@@ -34,6 +35,7 @@ app.set("views", join(__dirname, "views"));
 
 app.use("/", homeRouter);
 app.use("/api/users", userRouter);
+app.use("/dashboard", dashboardrouter);
 app.listen(PORT, () => {
   console.log("server started");
   console.log(`Server running on port ${PORT}`);

@@ -3,10 +3,15 @@
 import express from "express";
 import { check, validationResult } from "express-validator";
 import navbarData from "../../data/navbarData.js";
-import { getRegisterUser, registerUser } from "../../controllers/users.js";
+import {
+  authenticateUser,
+  getRegisterUser,
+  registerUser,
+} from "../../controllers/users.js";
 
 const router = express.Router();
 
 router.get("/register", getRegisterUser);
 router.post("/register", registerUser);
+router.get("/auth", authenticateUser);
 export default router;

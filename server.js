@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(__dirname);
 const app = express();
-const PORT = 3006;
+const PORT = 3010;
 app.use(bodyParser.urlencoded({ extended: false }));
 connectDB();
 // to get the req data in terms of json

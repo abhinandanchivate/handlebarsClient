@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const db = "mongodb://localhost:27017/devconnector";
+const db = "mongodb://localhost:27017/devconnectorUST";
 
 const connectDB = async () => {
   try {

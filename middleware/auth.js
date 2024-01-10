@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 const authenticate = (req, res, next) => {
+  console.log("hello from middleware");
   const token = req.header("x-auth-token");
 
   // If the token is there or not

@@ -5,7 +5,16 @@ import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
 import UserModel from "../models/UsersModel.js";
 
-const authenticateUser = (req, res) => {};
+const authenticateUser = async (req, res) => {
+  try {
+    console.log(JSON.stringify(req.user));
+    const user = await UserModel.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("server error");
+  }
+};
 
 const getRegisterUser = (req, res) => {
   res.render("auth/register", { navbar: navbarData });

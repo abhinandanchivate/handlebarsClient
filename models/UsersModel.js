@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import encryptPassword, { validatePassword } from "../utils/passwordUtils";
+import { encryptPassword, validatePassword } from "../utils/passwordUtils.js";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -20,8 +20,8 @@ const UserSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
-UserSchema.methods.encryptPassword = encryptPassword(password);
-UserSchema.methods.validPassword = validatePassword(password);
+UserSchema.methods.encryptPassword = encryptPassword;
+UserSchema.methods.validPassword = validatePassword;
 
 const User = mongoose.model("User", UserSchema);
 

@@ -29,12 +29,12 @@ app.use(cors());
 // refer teh static contnet
 app.use(express.static(join(__dirname, "public")));
 app.use(passport.initialize());
-app.use(passport.session());
-app.use((req, res, next) => {
-  res.locals.login = req.isAuthenticated();
-  res.locals.session = req.session;
-  next();
-});
+// app.use(passport.session());
+// app.use((req, res, next) => {
+//   res.locals.login = req.isAuthenticated();
+//   res.locals.session = req.session;
+//   next();
+// });
 // express hbs integration.
 
 // by setting up the engine hbs seettings

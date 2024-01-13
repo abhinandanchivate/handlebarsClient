@@ -15,6 +15,7 @@ import userRouter from "./routes/api/users.js";
 import bodyParser from "body-parser";
 import dashboardrouter from "./routes/dashboard.js";
 import authRouter from "./routes/api/auth.js";
+import profileRouter from "./routes/api/profile.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(__dirname);
@@ -27,7 +28,11 @@ app.use(express.json());
 // cors support
 app.use(cors());
 // refer teh static contnet
-app.use(express.static(join(__dirname, "public")));
+app.use(
+  express.static(join(__dirname, "public"), {
+    extensions: ["html", "htm", "js"],
+  })
+);
 app.use(passport.initialize());
 // app.use(passport.session());
 // app.use((req, res, next) => {
@@ -45,6 +50,7 @@ app.set("views", join(__dirname, "views"));
 // routes
 
 app.use("/", homeRouter);
+app.use("/api/profile", profileRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/dashboard", dashboardrouter);

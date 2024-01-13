@@ -16,6 +16,8 @@ import bodyParser from "body-parser";
 import dashboardrouter from "./routes/dashboard.js";
 import authRouter from "./routes/api/auth.js";
 import profileRouter from "./routes/api/profile.js";
+import cookieParser from "cookie-parser";
+import profileUIRouter from "./routes/profile.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(__dirname);
@@ -33,6 +35,7 @@ app.use(
     extensions: ["html", "htm", "js"],
   })
 );
+app.use(cookieParser());
 app.use(passport.initialize());
 // app.use(passport.session());
 // app.use((req, res, next) => {
@@ -54,6 +57,7 @@ app.use("/api/profile", profileRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/dashboard", dashboardrouter);
+app.use("/profile", profileUIRouter);
 app.listen(PORT, () => {
   console.log("server started");
   console.log(`Server running on port ${PORT}`);

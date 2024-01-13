@@ -2,11 +2,16 @@
   <h1 class="large text-primary">
     Dashboard
   </h1>
-  <p class="lead"><i class="fas fa-user"></i> Welcome John Doe</p>
-  {{> dashboardaction}}
+  <p class="lead"><i class="fas fa-user"></i> Welcome {{user.name}}</p>
+  {{#if (eq dashboard.profile null)}}
+  <div> <a href="/profile/create" class="btn btn-light">Create Profile</a></div>
+  {{else}}
+  <div>
+  {{> dashboard/dashboardaction action=actionData }}
 
-  {{> eduDetails}}
-  {{> expDetails}}
+ 
+  {{> dashboard/expDetails exps=exps}}
+   {{> dashboard/eduDetails}}
   <div class="my-2">
     <button class="btn btn-danger">
       <i class="fas fa-user-minus"></i>
@@ -14,4 +19,6 @@
       Delete My Account
     </button>
   </div>
+  </div>
+  {{/if}}
 </section>

@@ -103,12 +103,23 @@ const registerUser =
       const payload = {
         user: {
           id: user.id,
+          name: user.name,
         },
       };
 
       jwt.sign(payload, "jwtSecret", { expiresIn: "5 days" }, (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        //res.json({ token });
+        // it should redirect us to dashboard .
+        // return res.render("dashboard/dashboard", {
+        //   jwtToken: { token },
+        //   navbar: navbarData,
+        // });
+
+        res.cookie("jwtToken", token, { maxAge: 900000, httpOnly: true });
+        res.redirect("/dashboard");
+        // cookies
+        // we should go for server side sessioning / db based token validations.
       });
     } catch (err) {
       console.error(err);
